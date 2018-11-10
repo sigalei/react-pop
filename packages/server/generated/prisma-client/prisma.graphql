@@ -1,4 +1,4 @@
-export const typeDefs = /* GraphQL */ `type AggregatePopup {
+type AggregatePopup {
   count: Int!
 }
 
@@ -207,4 +207,3 @@ type Query {
 type Subscription {
   popup(where: PopupSubscriptionWhereInput): PopupSubscriptionPayload
 }
-`
