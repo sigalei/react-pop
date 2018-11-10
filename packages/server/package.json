@@ -1,5 +1,5 @@
 {
-  "name": "prisma-api-boilerplate",
+  "name": "react-pop",
   "version": "1.0.0",
   "description": "A boilerplate for a API with prisma.",
   "main": "index.js",
@@ -9,17 +9,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tretinha/prisma-api-boilerplate.git"
+    "url": "git+https://github.com/SigaLei/react-pop.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/tretinha/prisma-api-boilerplate/issues"
+    "url": "https://github.com/SigaLei/react-pop/issues"
   },
-  "homepage": "https://github.com/tretinha/prisma-api-boilerplate#readme",
+  "homepage": "https://github.com/SigaLei/react-pop#readme",
   "dependencies": {
     "graphql": "^14.0.2",
+    "graphql-cli": "^2.17.0",
     "prisma-client-lib": "^1.20.1"
   },
   "devDependencies": {
