@@ -1,0 +1,37 @@
+{
+  "config": {
+    "title": "React Pop",
+    "description": "A easy way to handle popups.",
+    "themeConfig": {},
+    "menu": [],
+    "ordering": "descending",
+    "version": "0.1.0",
+    "repository": "https://github.com/SigaLei/react-pop",
+    "native": false,
+    "typescript": true
+  },
+  "entries": {
+    "docs/ReactPop.mdx": {
+      "name": "ReactPop",
+      "id": "059184ec47a32758f7662cacc90a33be",
+      "filepath": "docs/ReactPop.mdx",
+      "link": "https://github.com/SigaLei/react-pop/edit/master/packages/app/docs/ReactPop.mdx",
+      "slug": "docs-react-pop",
+      "route": "/docs-react-pop",
+      "order": 0,
+      "menu": null,
+      "headings": [
+        {
+          "depth": 1,
+          "slug": "reactkanban",
+          "value": "ReactKanban"
+        },
+        {
+          "depth": 2,
+          "slug": "basic-usage",
+          "value": "Basic usage"
+        }
+      ]
+    }
+  }
+}
