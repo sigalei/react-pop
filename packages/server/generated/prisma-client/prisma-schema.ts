@@ -37,9 +37,9 @@ type PageInfo {
 type Popup {
   id: ID!
   elementId: ID!
-  URL: String!
+  URL: String
   name: String!
-  text: String!
+  text: String
 }
 
 type PopupConnection {
@@ -50,9 +50,9 @@ type PopupConnection {
 
 input PopupCreateInput {
   elementId: ID!
-  URL: String!
+  URL: String
   name: String!
-  text: String!
+  text: String
 }
 
 type PopupEdge {
@@ -80,9 +80,9 @@ enum PopupOrderByInput {
 type PopupPreviousValues {
   id: ID!
   elementId: ID!
-  URL: String!
+  URL: String
   name: String!
-  text: String!
+  text: String
 }
 
 type PopupSubscriptionPayload {

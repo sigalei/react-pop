@@ -119,9 +119,9 @@ export type MutationType = "CREATED" | "UPDATED" | "DELETED";
 
 export interface PopupCreateInput {
   elementId: ID_Input;
-  URL: String;
+  URL?: String;
   name: String;
-  text: String;
+  text?: String;
 }
 
 export interface PopupUpdateInput {
@@ -268,9 +268,9 @@ export interface BatchPayloadSubscription
 export interface PopupPreviousValues {
   id: ID_Output;
   elementId: ID_Output;
-  URL: String;
+  URL?: String;
   name: String;
-  text: String;
+  text?: String;
 }
 
 export interface PopupPreviousValuesPromise
@@ -335,9 +335,9 @@ export interface PopupSubscriptionPayloadSubscription
 export interface Popup {
   id: ID_Output;
   elementId: ID_Output;
-  URL: String;
+  URL?: String;
   name: String;
-  text: String;
+  text?: String;
 }
 
 export interface PopupPromise extends Promise<Popup>, Fragmentable {

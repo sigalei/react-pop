@@ -1,7 +1,7 @@
 type Popup {
   id: ID! @unique
   elementId: ID!
-  URL: String!
+  URL: String
   name: String!
-  text: String!
+  text: String
 }
