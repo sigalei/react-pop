@@ -52,6 +52,7 @@
     "@types/styled-components": "^4.0.1",
     "buble": "0.19.4",
     "idx": "^2.4.0",
+    "isomorphic-fetch": "^2.2.1",
     "react-beautiful-dnd": "^9.0.2"
   },
   "peerDependencies": {

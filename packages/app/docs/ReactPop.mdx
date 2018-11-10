@@ -7,10 +7,12 @@ import ReactPop from '../src/ReactPop'
 
 # ReactKanban
 
-<PropsTable of={ReactPop} />
-
 ## Basic usage
 
-<Playground>
-  <ReactPop element="element2"/>
+<Playground style={{ height: '200px' }}>
+  <div id="element1" style={{ marginTop: '50px', position: 'relative' }}>
+    testando se o popup aparece no elemento 1
+  </div>
+  <div id="element2" style={{ marginTop: '50px', position: 'relative' }}>ou se aparece no elemento 2</div>
+  <ReactPop api={'https://us1.prisma.sh/colombini-c4ed8c/prisma-api-boilerplate/dev'}/>
 </Playground>
