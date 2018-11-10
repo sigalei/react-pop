@@ -1,0 +1,6 @@
+endpoint: https://us1.prisma.sh/colombini-c4ed8c/prisma-api-boilerplate/dev
+datamodel: datamodel.prisma
+
+generate:
+  - generator: typescript-client
+    output: ./generated/prisma-client/
