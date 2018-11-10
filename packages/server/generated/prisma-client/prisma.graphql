@@ -40,6 +40,7 @@ type Popup {
   URL: String
   name: String!
   text: String
+  location: String!
 }
 
 type PopupConnection {
@@ -53,6 +54,7 @@ input PopupCreateInput {
   URL: String
   name: String!
   text: String
+  location: String!
 }
 
 type PopupEdge {
@@ -71,6 +73,8 @@ enum PopupOrderByInput {
   name_DESC
   text_ASC
   text_DESC
+  location_ASC
+  location_DESC
   createdAt_ASC
   createdAt_DESC
   updatedAt_ASC
@@ -83,6 +87,7 @@ type PopupPreviousValues {
   URL: String
   name: String!
   text: String
+  location: String!
 }
 
 type PopupSubscriptionPayload {
@@ -108,6 +113,7 @@ input PopupUpdateInput {
   URL: String
   name: String
   text: String
+  location: String
 }
 
 input PopupUpdateManyMutationInput {
@@ -115,6 +121,7 @@ input PopupUpdateManyMutationInput {
   URL: String
   name: String
   text: String
+  location: String
 }
 
 input PopupWhereInput {
@@ -188,6 +195,20 @@ input PopupWhereInput {
   text_not_starts_with: String
   text_ends_with: String
   text_not_ends_with: String
+  location: String
+  location_not: String
+  location_in: [String!]
+  location_not_in: [String!]
+  location_lt: String
+  location_lte: String
+  location_gt: String
+  location_gte: String
+  location_contains: String
+  location_not_contains: String
+  location_starts_with: String
+  location_not_starts_with: String
+  location_ends_with: String
+  location_not_ends_with: String
   AND: [PopupWhereInput!]
   OR: [PopupWhereInput!]
   NOT: [PopupWhereInput!]

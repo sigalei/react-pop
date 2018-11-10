@@ -110,6 +110,8 @@ export type PopupOrderByInput =
   | "name_DESC"
   | "text_ASC"
   | "text_DESC"
+  | "location_ASC"
+  | "location_DESC"
   | "createdAt_ASC"
   | "createdAt_DESC"
   | "updatedAt_ASC"
@@ -122,6 +124,7 @@ export interface PopupCreateInput {
   URL?: String;
   name: String;
   text?: String;
+  location: String;
 }
 
 export interface PopupUpdateInput {
@@ -129,6 +132,7 @@ export interface PopupUpdateInput {
   URL?: String;
   name?: String;
   text?: String;
+  location?: String;
 }
 
 export interface PopupUpdateManyMutationInput {
@@ -136,6 +140,7 @@ export interface PopupUpdateManyMutationInput {
   URL?: String;
   name?: String;
   text?: String;
+  location?: String;
 }
 
 export interface PopupWhereInput {
@@ -209,6 +214,20 @@ export interface PopupWhereInput {
   text_not_starts_with?: String;
   text_ends_with?: String;
   text_not_ends_with?: String;
+  location?: String;
+  location_not?: String;
+  location_in?: String[] | String;
+  location_not_in?: String[] | String;
+  location_lt?: String;
+  location_lte?: String;
+  location_gt?: String;
+  location_gte?: String;
+  location_contains?: String;
+  location_not_contains?: String;
+  location_starts_with?: String;
+  location_not_starts_with?: String;
+  location_ends_with?: String;
+  location_not_ends_with?: String;
   AND?: PopupWhereInput[] | PopupWhereInput;
   OR?: PopupWhereInput[] | PopupWhereInput;
   NOT?: PopupWhereInput[] | PopupWhereInput;
@@ -271,6 +290,7 @@ export interface PopupPreviousValues {
   URL?: String;
   name: String;
   text?: String;
+  location: String;
 }
 
 export interface PopupPreviousValuesPromise
@@ -281,6 +301,7 @@ export interface PopupPreviousValuesPromise
   URL: () => Promise<String>;
   name: () => Promise<String>;
   text: () => Promise<String>;
+  location: () => Promise<String>;
 }
 
 export interface PopupPreviousValuesSubscription
@@ -291,6 +312,7 @@ export interface PopupPreviousValuesSubscription
   URL: () => Promise<AsyncIterator<String>>;
   name: () => Promise<AsyncIterator<String>>;
   text: () => Promise<AsyncIterator<String>>;
+  location: () => Promise<AsyncIterator<String>>;
 }
 
 export interface PopupEdge {
@@ -338,6 +360,7 @@ export interface Popup {
   URL?: String;
   name: String;
   text?: String;
+  location: String;
 }
 
 export interface PopupPromise extends Promise<Popup>, Fragmentable {
@@ -346,6 +369,7 @@ export interface PopupPromise extends Promise<Popup>, Fragmentable {
   URL: () => Promise<String>;
   name: () => Promise<String>;
   text: () => Promise<String>;
+  location: () => Promise<String>;
 }
 
 export interface PopupSubscription
@@ -356,6 +380,7 @@ export interface PopupSubscription
   URL: () => Promise<AsyncIterator<String>>;
   name: () => Promise<AsyncIterator<String>>;
   text: () => Promise<AsyncIterator<String>>;
+  location: () => Promise<AsyncIterator<String>>;
 }
 
 export interface PopupConnection {}
