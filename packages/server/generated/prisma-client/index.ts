@@ -10,7 +10,7 @@ type AtLeastOne<T, U = { [K in keyof T]: Pick<T, K> }> = Partial<T> &
   U[keyof U];
 
 export interface Exists {
-  user: (where?: UserWhereInput) => Promise<boolean>;
+  popup: (where?: PopupWhereInput) => Promise<boolean>;
 }
 
 export interface Node {}
@@ -32,51 +32,51 @@ export interface Prisma {
    * Queries
    */
 
-  user: (where: UserWhereUniqueInput) => UserPromise;
-  users: (
+  popup: (where: PopupWhereUniqueInput) => PopupPromise;
+  popups: (
     args?: {
-      where?: UserWhereInput;
-      orderBy?: UserOrderByInput;
+      where?: PopupWhereInput;
+      orderBy?: PopupOrderByInput;
       skip?: Int;
       after?: String;
       before?: String;
       first?: Int;
       last?: Int;
     }
-  ) => FragmentableArray<User>;
-  usersConnection: (
+  ) => FragmentableArray<Popup>;
+  popupsConnection: (
     args?: {
-      where?: UserWhereInput;
-      orderBy?: UserOrderByInput;
+      where?: PopupWhereInput;
+      orderBy?: PopupOrderByInput;
       skip?: Int;
       after?: String;
       before?: String;
       first?: Int;
       last?: Int;
     }
-  ) => UserConnectionPromise;
+  ) => PopupConnectionPromise;
   node: (args: { id: ID_Output }) => Node;
 
   /**
    * Mutations
    */
 
-  createUser: (data: UserCreateInput) => UserPromise;
-  updateUser: (
-    args: { data: UserUpdateInput; where: UserWhereUniqueInput }
-  ) => UserPromise;
-  updateManyUsers: (
-    args: { data: UserUpdateManyMutationInput; where?: UserWhereInput }
+  createPopup: (data: PopupCreateInput) => PopupPromise;
+  updatePopup: (
+    args: { data: PopupUpdateInput; where: PopupWhereUniqueInput }
+  ) => PopupPromise;
+  updateManyPopups: (
+    args: { data: PopupUpdateManyMutationInput; where?: PopupWhereInput }
   ) => BatchPayloadPromise;
-  upsertUser: (
+  upsertPopup: (
     args: {
-      where: UserWhereUniqueInput;
-      create: UserCreateInput;
-      update: UserUpdateInput;
+      where: PopupWhereUniqueInput;
+      create: PopupCreateInput;
+      update: PopupUpdateInput;
     }
-  ) => UserPromise;
-  deleteUser: (where: UserWhereUniqueInput) => UserPromise;
-  deleteManyUsers: (where?: UserWhereInput) => BatchPayloadPromise;
+  ) => PopupPromise;
+  deletePopup: (where: PopupWhereUniqueInput) => PopupPromise;
+  deleteManyPopups: (where?: PopupWhereInput) => BatchPayloadPromise;
 
   /**
    * Subscriptions
@@ -86,9 +86,9 @@ export interface Prisma {
 }
 
 export interface Subscription {
-  user: (
-    where?: UserSubscriptionWhereInput
-  ) => UserSubscriptionPayloadSubscription;
+  popup: (
+    where?: PopupSubscriptionWhereInput
+  ) => PopupSubscriptionPayloadSubscription;
 }
 
 export interface ClientConstructor<T> {
@@ -99,11 +99,19 @@ export interface ClientConstructor<T> {
  * Types
  */
 
-export type UserOrderByInput =
+export type PopupOrderByInput =
   | "id_ASC"
   | "id_DESC"
+  | "elementId_ASC"
+  | "elementId_DESC"
+  | "URL_ASC"
+  | "URL_DESC"
   | "name_ASC"
   | "name_DESC"
+  | "text_ASC"
+  | "text_DESC"
+  | "location_ASC"
+  | "location_DESC"
   | "createdAt_ASC"
   | "createdAt_DESC"
   | "updatedAt_ASC"
@@ -111,19 +119,31 @@ export type UserOrderByInput =
 
 export type MutationType = "CREATED" | "UPDATED" | "DELETED";
 
-export interface UserCreateInput {
+export interface PopupCreateInput {
+  elementId: ID_Input;
+  URL?: String;
   name: String;
+  text?: String;
+  location: String;
 }
 
-export interface UserUpdateInput {
+export interface PopupUpdateInput {
+  elementId?: ID_Input;
+  URL?: String;
   name?: String;
+  text?: String;
+  location?: String;
 }
 
-export interface UserUpdateManyMutationInput {
+export interface PopupUpdateManyMutationInput {
+  elementId?: ID_Input;
+  URL?: String;
   name?: String;
+  text?: String;
+  location?: String;
 }
 
-export interface UserWhereInput {
+export interface PopupWhereInput {
   id?: ID_Input;
   id_not?: ID_Input;
   id_in?: ID_Input[] | ID_Input;
@@ -138,6 +158,34 @@ export interface UserWhereInput {
   id_not_starts_with?: ID_Input;
   id_ends_with?: ID_Input;
   id_not_ends_with?: ID_Input;
+  elementId?: ID_Input;
+  elementId_not?: ID_Input;
+  elementId_in?: ID_Input[] | ID_Input;
+  elementId_not_in?: ID_Input[] | ID_Input;
+  elementId_lt?: ID_Input;
+  elementId_lte?: ID_Input;
+  elementId_gt?: ID_Input;
+  elementId_gte?: ID_Input;
+  elementId_contains?: ID_Input;
+  elementId_not_contains?: ID_Input;
+  elementId_starts_with?: ID_Input;
+  elementId_not_starts_with?: ID_Input;
+  elementId_ends_with?: ID_Input;
+  elementId_not_ends_with?: ID_Input;
+  URL?: String;
+  URL_not?: String;
+  URL_in?: String[] | String;
+  URL_not_in?: String[] | String;
+  URL_lt?: String;
+  URL_lte?: String;
+  URL_gt?: String;
+  URL_gte?: String;
+  URL_contains?: String;
+  URL_not_contains?: String;
+  URL_starts_with?: String;
+  URL_not_starts_with?: String;
+  URL_ends_with?: String;
+  URL_not_ends_with?: String;
   name?: String;
   name_not?: String;
   name_in?: String[] | String;
@@ -152,23 +200,51 @@ export interface UserWhereInput {
   name_not_starts_with?: String;
   name_ends_with?: String;
   name_not_ends_with?: String;
-  AND?: UserWhereInput[] | UserWhereInput;
-  OR?: UserWhereInput[] | UserWhereInput;
-  NOT?: UserWhereInput[] | UserWhereInput;
+  text?: String;
+  text_not?: String;
+  text_in?: String[] | String;
+  text_not_in?: String[] | String;
+  text_lt?: String;
+  text_lte?: String;
+  text_gt?: String;
+  text_gte?: String;
+  text_contains?: String;
+  text_not_contains?: String;
+  text_starts_with?: String;
+  text_not_starts_with?: String;
+  text_ends_with?: String;
+  text_not_ends_with?: String;
+  location?: String;
+  location_not?: String;
+  location_in?: String[] | String;
+  location_not_in?: String[] | String;
+  location_lt?: String;
+  location_lte?: String;
+  location_gt?: String;
+  location_gte?: String;
+  location_contains?: String;
+  location_not_contains?: String;
+  location_starts_with?: String;
+  location_not_starts_with?: String;
+  location_ends_with?: String;
+  location_not_ends_with?: String;
+  AND?: PopupWhereInput[] | PopupWhereInput;
+  OR?: PopupWhereInput[] | PopupWhereInput;
+  NOT?: PopupWhereInput[] | PopupWhereInput;
 }
 
-export interface UserSubscriptionWhereInput {
+export interface PopupSubscriptionWhereInput {
   mutation_in?: MutationType[] | MutationType;
   updatedFields_contains?: String;
   updatedFields_contains_every?: String[] | String;
   updatedFields_contains_some?: String[] | String;
-  node?: UserWhereInput;
-  AND?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput;
-  OR?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput;
-  NOT?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput;
+  node?: PopupWhereInput;
+  AND?: PopupSubscriptionWhereInput[] | PopupSubscriptionWhereInput;
+  OR?: PopupSubscriptionWhereInput[] | PopupSubscriptionWhereInput;
+  NOT?: PopupSubscriptionWhereInput[] | PopupSubscriptionWhereInput;
 }
 
-export type UserWhereUniqueInput = AtLeastOne<{
+export type PopupWhereUniqueInput = AtLeastOne<{
   id: ID_Input;
 }>;
 
@@ -176,18 +252,18 @@ export interface NodeNode {
   id: ID_Output;
 }
 
-export interface AggregateUser {
+export interface AggregatePopup {
   count: Int;
 }
 
-export interface AggregateUserPromise
-  extends Promise<AggregateUser>,
+export interface AggregatePopupPromise
+  extends Promise<AggregatePopup>,
     Fragmentable {
   count: () => Promise<Int>;
 }
 
-export interface AggregateUserSubscription
-  extends Promise<AsyncIterator<AggregateUser>>,
+export interface AggregatePopupSubscription
+  extends Promise<AsyncIterator<AggregatePopup>>,
     Fragmentable {
   count: () => Promise<AsyncIterator<Int>>;
 }
@@ -208,97 +284,121 @@ export interface BatchPayloadSubscription
   count: () => Promise<AsyncIterator<Long>>;
 }
 
-export interface UserPreviousValues {
+export interface PopupPreviousValues {
   id: ID_Output;
+  elementId: ID_Output;
+  URL?: String;
   name: String;
+  text?: String;
+  location: String;
 }
 
-export interface UserPreviousValuesPromise
-  extends Promise<UserPreviousValues>,
+export interface PopupPreviousValuesPromise
+  extends Promise<PopupPreviousValues>,
     Fragmentable {
   id: () => Promise<ID_Output>;
+  elementId: () => Promise<ID_Output>;
+  URL: () => Promise<String>;
   name: () => Promise<String>;
+  text: () => Promise<String>;
+  location: () => Promise<String>;
 }
 
-export interface UserPreviousValuesSubscription
-  extends Promise<AsyncIterator<UserPreviousValues>>,
+export interface PopupPreviousValuesSubscription
+  extends Promise<AsyncIterator<PopupPreviousValues>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
+  elementId: () => Promise<AsyncIterator<ID_Output>>;
+  URL: () => Promise<AsyncIterator<String>>;
   name: () => Promise<AsyncIterator<String>>;
+  text: () => Promise<AsyncIterator<String>>;
+  location: () => Promise<AsyncIterator<String>>;
 }
 
-export interface UserEdge {
+export interface PopupEdge {
   cursor: String;
 }
 
-export interface UserEdgePromise extends Promise<UserEdge>, Fragmentable {
-  node: <T = User>() => T;
+export interface PopupEdgePromise extends Promise<PopupEdge>, Fragmentable {
+  node: <T = Popup>() => T;
   cursor: () => Promise<String>;
 }
 
-export interface UserEdgeSubscription
-  extends Promise<AsyncIterator<UserEdge>>,
+export interface PopupEdgeSubscription
+  extends Promise<AsyncIterator<PopupEdge>>,
     Fragmentable {
-  node: <T = UserSubscription>() => T;
+  node: <T = PopupSubscription>() => T;
   cursor: () => Promise<AsyncIterator<String>>;
 }
 
-export interface UserSubscriptionPayload {
+export interface PopupSubscriptionPayload {
   mutation: MutationType;
   updatedFields?: String[];
 }
 
-export interface UserSubscriptionPayloadPromise
-  extends Promise<UserSubscriptionPayload>,
+export interface PopupSubscriptionPayloadPromise
+  extends Promise<PopupSubscriptionPayload>,
     Fragmentable {
   mutation: () => Promise<MutationType>;
-  node: <T = User>() => T;
+  node: <T = Popup>() => T;
   updatedFields: () => Promise<String[]>;
-  previousValues: <T = UserPreviousValues>() => T;
+  previousValues: <T = PopupPreviousValues>() => T;
 }
 
-export interface UserSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<UserSubscriptionPayload>>,
+export interface PopupSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<PopupSubscriptionPayload>>,
     Fragmentable {
   mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = UserSubscription>() => T;
+  node: <T = PopupSubscription>() => T;
   updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = UserPreviousValuesSubscription>() => T;
+  previousValues: <T = PopupPreviousValuesSubscription>() => T;
 }
 
-export interface User {
+export interface Popup {
   id: ID_Output;
+  elementId: ID_Output;
+  URL?: String;
   name: String;
+  text?: String;
+  location: String;
 }
 
-export interface UserPromise extends Promise<User>, Fragmentable {
+export interface PopupPromise extends Promise<Popup>, Fragmentable {
   id: () => Promise<ID_Output>;
+  elementId: () => Promise<ID_Output>;
+  URL: () => Promise<String>;
   name: () => Promise<String>;
+  text: () => Promise<String>;
+  location: () => Promise<String>;
 }
 
-export interface UserSubscription
-  extends Promise<AsyncIterator<User>>,
+export interface PopupSubscription
+  extends Promise<AsyncIterator<Popup>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
+  elementId: () => Promise<AsyncIterator<ID_Output>>;
+  URL: () => Promise<AsyncIterator<String>>;
   name: () => Promise<AsyncIterator<String>>;
+  text: () => Promise<AsyncIterator<String>>;
+  location: () => Promise<AsyncIterator<String>>;
 }
 
-export interface UserConnection {}
+export interface PopupConnection {}
 
-export interface UserConnectionPromise
-  extends Promise<UserConnection>,
+export interface PopupConnectionPromise
+  extends Promise<PopupConnection>,
     Fragmentable {
   pageInfo: <T = PageInfo>() => T;
-  edges: <T = FragmentableArray<UserEdge>>() => T;
-  aggregate: <T = AggregateUser>() => T;
+  edges: <T = FragmentableArray<PopupEdge>>() => T;
+  aggregate: <T = AggregatePopup>() => T;
 }
 
-export interface UserConnectionSubscription
-  extends Promise<AsyncIterator<UserConnection>>,
+export interface PopupConnectionSubscription
+  extends Promise<AsyncIterator<PopupConnection>>,
     Fragmentable {
   pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<UserEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateUserSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<PopupEdgeSubscription>>>() => T;
+  aggregate: <T = AggregatePopupSubscription>() => T;
 }
 
 export interface PageInfo {

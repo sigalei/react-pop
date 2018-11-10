@@ -1,4 +1,8 @@
-type User {
+type Popup {
   id: ID! @unique
+  elementId: ID!
+  URL: String
   name: String!
+  text: String
+  location: String!
 }
